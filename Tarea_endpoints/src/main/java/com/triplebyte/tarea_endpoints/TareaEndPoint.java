@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 
 public class TareaEndPoint {
-    int[] datos = {5,4,3,2,1,6,7,8,9,10,20};
+    int[] datos = {9,5,4,3,2,1,6,7,7,9,9};
 
     @GetMapping("/order")
     public int[] order(){
@@ -25,16 +25,16 @@ public class TareaEndPoint {
         return datos;
     }
 
-    @GetMapping("/media")
-    public float media() {
-        // media
+    @GetMapping("/mean")
+    public float mean() {
+        // mean
         int suma = 0;
         for (int i = 0; i < datos.length; i++) {
             suma += datos[i];
         }
-        float media;
-        media = (float) suma / (datos.length);
-        return media;
+        float mean;
+        mean = (float) suma / (datos.length);
+        return mean;
     }
 
     @GetMapping("/median")
@@ -53,13 +53,33 @@ public class TareaEndPoint {
         return median;
     }
 
+    @GetMapping("/mode")
+    public int mode() {
+        // mode
+        int mode = 0;
+        int maxCount = 0;
+        for (int i = 0; i < datos.length; i++) {
+            int value = datos[i];
+            int count = 0;
+            for (int j = i+1; j < datos.length; j++) {
+                if (datos[j] == value) count++;
+                if (count > maxCount) {
+                    mode = value;
+                    maxCount = count;
+                }
+            }
+        }
+        return mode;
+    }
+
     @GetMapping("/stats")
     public Estadisticas stats() {
         int[] order = order();
-        float media = media();
+        float mean = mean();
         float median = median();
+        int mode = mode();
 
-        return new Estadisticas(order, media, median);
+        return new Estadisticas(order, mean, median, mode);
     }
 
 }

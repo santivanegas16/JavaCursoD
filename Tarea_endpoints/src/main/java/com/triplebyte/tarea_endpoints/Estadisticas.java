@@ -2,22 +2,28 @@ package com.triplebyte.tarea_endpoints;
 
 public class Estadisticas {
     int[] order;
-    float media;
+    float mean;
     float median;
+    int mode;
 
-    public Estadisticas(int[] order, float media, float median) {
+    public Estadisticas(int[] order, float mean, float median, int mode) {
         this.order = order;
-        this.media = media;
+        this.mean = mean;
         this.median = median;
+        this.mode = mode;
+
     }
     public int[] getOrder() {
         return order;
     }
-    public float getMedia() {
-        return media;
+    public float getMean() {
+        return mean;
     }
-
     public float getMedian() {
         return median;
+    }
+
+    public int getMode() {
+        return mode;
     }
 }
