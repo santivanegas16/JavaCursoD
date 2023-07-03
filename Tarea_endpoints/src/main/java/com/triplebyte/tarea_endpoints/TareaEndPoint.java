@@ -25,16 +25,16 @@ public class TareaEndPoint {
         return datos;
     }
 
-    @GetMapping("/media")
-    public float media() {
-        // media
+    @GetMapping("/mean")
+    public float mean() {
+        // mean
         int suma = 0;
         for (int i = 0; i < datos.length; i++) {
             suma += datos[i];
         }
-        float media;
-        media = (float) suma / (datos.length);
-        return media;
+        float mean;
+        mean = (float) suma / (datos.length);
+        return mean;
     }
 
     @GetMapping("/median")
@@ -53,13 +53,22 @@ public class TareaEndPoint {
         return median;
     }
 
+    @GetMapping("/mode")
+    public float mode() {
+        // mode
+        float mode;
+        mode=1+2;
+        return mode;
+    }
+
     @GetMapping("/stats")
     public Estadisticas stats() {
         int[] order = order();
-        float media = media();
+        float mean = mean();
         float median = median();
+        float mode = mode();
 
-        return new Estadisticas(order, media, median);
+        return new Estadisticas(order, mean, median, mode);
     }
 
 }
