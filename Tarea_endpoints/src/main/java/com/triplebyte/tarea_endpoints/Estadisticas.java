@@ -4,9 +4,9 @@ public class Estadisticas {
     int[] order;
     float mean;
     float median;
-    float mode;
+    int mode;
 
-    public Estadisticas(int[] order, float mean, float median, float mode) {
+    public Estadisticas(int[] order, float mean, float median, int mode) {
         this.order = order;
         this.mean = mean;
         this.median = median;
@@ -23,7 +23,7 @@ public class Estadisticas {
         return median;
     }
 
-    public float getMode() {
+    public int getMode() {
         return mode;
     }
 }

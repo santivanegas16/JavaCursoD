@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 
 public class TareaEndPoint {
-    int[] datos = {5,4,3,2,1,6,7,8,9,10,20};
+    int[] datos = {9,5,4,3,2,1,6,7,7,9,9};
 
     @GetMapping("/order")
     public int[] order(){
@@ -54,10 +54,21 @@ public class TareaEndPoint {
     }
 
     @GetMapping("/mode")
-    public float mode() {
+    public int mode() {
         // mode
-        float mode;
-        mode=1+2;
+        int mode = 0;
+        int maxCount = 0;
+        for (int i = 0; i < datos.length; i++) {
+            int value = datos[i];
+            int count = 0;
+            for (int j = i+1; j < datos.length; j++) {
+                if (datos[j] == value) count++;
+                if (count > maxCount) {
+                    mode = value;
+                    maxCount = count;
+                }
+            }
+        }
         return mode;
     }
 
@@ -66,7 +77,7 @@ public class TareaEndPoint {
         int[] order = order();
         float mean = mean();
         float median = median();
-        float mode = mode();
+        int mode = mode();
 
         return new Estadisticas(order, mean, median, mode);
     }
