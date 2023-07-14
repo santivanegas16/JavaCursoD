@@ -1,28 +1,23 @@
 package com.triplebyte.tarea_endpoints;
 
+import com.triplebyte.services.Ordering;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-
 public class TareaEndPoint {
+
+    @Autowired
+    private Ordering ordering;
+
     int[] datos = {9,5,4,3,2,1,6,7,7,9,9};
 
     @GetMapping("/order")
-    public int[] order(){
-        for (int i = 0; i < datos.length; i++) {
-            for (int j = i+1; j < datos.length; j++) {
-                int datotemp = 0;
-                if (datos[i] > datos[j]) {
-                    datotemp = datos [i];
-                    datos[i] = datos [j];
-                    datos [j] = datotemp;
-                }
-            }
-        }
-        return datos;
+    public int[] orderArray(){
+        return ordering.order(datos);
     }
 
     @GetMapping("/mean")
@@ -74,7 +69,7 @@ public class TareaEndPoint {
 
     @GetMapping("/stats")
     public Estadisticas stats() {
-        int[] order = order();
+        int[] order = orderArray();
         float mean = mean();
         float median = median();
         int mode = mode();
