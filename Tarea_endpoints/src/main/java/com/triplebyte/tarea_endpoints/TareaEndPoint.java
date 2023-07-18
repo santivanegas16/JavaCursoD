@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class TareaEndPoint {
 
-    @Autowired
-    private Ordering ordering;
-
     int[] datos = {9,5,4,3,2,1,6,7,7,9,9};
 
+    @Autowired
+    private Ordering order;
+
     @GetMapping("/order")
-    public int[] orderArray(){
-        return ordering.order(datos);
+    public int[] order(){
+        return order.ordenarDatos(datos);
     }
 
     @GetMapping("/mean")
@@ -69,7 +69,7 @@ public class TareaEndPoint {
 
     @GetMapping("/stats")
     public Estadisticas stats() {
-        int[] order = orderArray();
+        int[] order = order();
         float mean = mean();
         float median = median();
         int mode = mode();
