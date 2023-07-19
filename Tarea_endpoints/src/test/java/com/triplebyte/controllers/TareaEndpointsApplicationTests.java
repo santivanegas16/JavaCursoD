@@ -1,4 +1,4 @@
-package com.triplebyte.tarea_endpoints;
+package com.triplebyte.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

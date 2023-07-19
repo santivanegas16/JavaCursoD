@@ -1,13 +1,13 @@
-package com.triplebyte.tarea_endpoints;
+package com.triplebyte;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TareaEndpointsApplication {
+public class App {
 
     public static void main(String[] args) {
-        SpringApplication.run(TareaEndpointsApplication.class, args);
+        SpringApplication.run(App.class, args);
     }
 
 }
