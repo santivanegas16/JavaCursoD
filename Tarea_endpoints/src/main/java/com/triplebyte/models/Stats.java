@@ -1,12 +1,12 @@
-package com.triplebyte.tarea_endpoints;
+package com.triplebyte.models;
 
-public class Estadisticas {
+public class Stats {
     int[] order;
     float mean;
     float median;
     int mode;
 
-    public Estadisticas(int[] order, float mean, float median, int mode) {
+    public Stats(int[] order, float mean, float median, int mode) {
         this.order = order;
         this.mean = mean;
         this.median = median;
