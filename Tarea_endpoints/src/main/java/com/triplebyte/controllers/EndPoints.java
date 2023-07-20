@@ -9,19 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class EndPoints {
 
-    int[] datos = {9,5,4,3,2,1,1000,6,7,7,9,99};
+    int[] datos = {9,5,4,3,2,1,1000,6,7,7,9,999};
 
     @Autowired
     private Ordering order;
 
     @Autowired
-    private Mean mean;
-
-    @Autowired
-    private Median median;
-
-    @Autowired
-    private Mode mode;
+    private CalcStats calcStats;
 
     @Autowired
     private Hypergeometric hypergeometric;
@@ -29,18 +23,9 @@ public class EndPoints {
     @GetMapping("/order")
     public int[] order(){ return order.ordenarDatos(datos); }
 
-    @GetMapping("/mean")
-    public float mean(){ return mean.mean(datos); }
-
-    @GetMapping("/median")
-    public float median(){ return median.median(datos); }
-
-    @GetMapping("/mode")
-    public int mode(){ return mode.mode(datos); }
-
     @GetMapping("/stats")
     public Stats stats() {
-        return new Stats(order(), mean(), median(), mode());
+        return new Stats(order(), calcStats.mean(datos), calcStats.median(datos), calcStats.mode(datos));
     }
 
     @PostMapping("/distribution")
