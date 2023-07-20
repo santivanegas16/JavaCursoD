@@ -25,7 +25,7 @@ public class EndPoints {
 
     @GetMapping("/stats")
     public Stats stats() {
-        return new Stats(order(), stats.mean(), stats.median(), stats.mode());
+        return new Stats(order(), calcStats.mean(datos), calcStats.median(datos), calcStats.mode(datos));
     }
 
     @PostMapping("/distribution")
