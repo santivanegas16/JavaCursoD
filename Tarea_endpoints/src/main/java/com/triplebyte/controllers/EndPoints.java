@@ -15,13 +15,7 @@ public class EndPoints {
     private Ordering order;
 
     @Autowired
-    private Mean mean;
-
-    @Autowired
-    private Median median;
-
-    @Autowired
-    private Mode mode;
+    private CalcStats calcStats;
 
     @Autowired
     private Hypergeometric hypergeometric;
@@ -29,18 +23,9 @@ public class EndPoints {
     @GetMapping("/order")
     public int[] order(){ return order.ordenarDatos(datos); }
 
-    @GetMapping("/mean")
-    public float mean(){ return mean.mean(datos); }
-
-    @GetMapping("/median")
-    public float median(){ return median.median(datos); }
-
-    @GetMapping("/mode")
-    public int mode(){ return mode.mode(datos); }
-
     @GetMapping("/stats")
     public Stats stats() {
-        return new Stats(order(), mean(), median(), mode());
+        return new Stats(order(), stats.mean(), stats.median(), stats.mode());
     }
 
     @PostMapping("/distribution")

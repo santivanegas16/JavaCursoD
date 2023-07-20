@@ -3,7 +3,7 @@ package com.triplebyte.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Stats {
+public class CalcStats {
     public float mean(int[] Datos) {
         // mean
         int suma = 0;
