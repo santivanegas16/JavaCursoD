@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class EndPoints {
 
-    int[] datos = {9,5,4,3,2,1,1000,6,7,7,9,99};
+    int[] datos = {9,5,4,3,2,1,1000,6,7,7,9,999};
 
     @Autowired
     private Ordering order;
