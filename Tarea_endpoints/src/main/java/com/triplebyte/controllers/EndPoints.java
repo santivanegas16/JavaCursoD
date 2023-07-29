@@ -1,9 +1,12 @@
 package com.triplebyte.controllers;
 import com.triplebyte.models.Distribution;
+import com.triplebyte.models.Number;
 import com.triplebyte.models.Stats;
 import com.triplebyte.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -20,6 +23,9 @@ public class EndPoints {
     @Autowired
     private Hypergeometric hypergeometric;
 
+    @Autowired
+    private NumbersService numbersService;
+
     @GetMapping("/order")
     public int[] order(){ return order.ordenarDatos(datos); }
 
@@ -35,6 +41,11 @@ public class EndPoints {
         int tam_subconjunto_poblacion = distribution.getTam_subconjunto_poblacion();
         int elementos_subconjunto_interes = distribution.getElementos_subconjunto_interes();
         return hypergeometric.calculate(tam_total_poblacion, tam_muestra, tam_subconjunto_poblacion, elementos_subconjunto_interes);
+    }
+
+    @GetMapping("/allNumbers")
+    public List<Number> getAllNumbers(){
+        return numbersService.getAllNumbers();
     }
 
 }
