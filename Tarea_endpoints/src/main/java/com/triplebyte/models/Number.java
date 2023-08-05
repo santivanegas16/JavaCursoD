@@ -6,18 +6,19 @@ import javax.persistence.*;
 @Table(name = "numbers")
 public class Number {
 
-    @Id // Representa a un primary key de la tabla numbers
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // representa a un campo autogenerado (secuencial), equivalente a un campo identity de una sentencia SQL.
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_number;
     private double value_number;
 
-    public Number() {
 
+    public Number() {
+        // Constructor predeterminado sin argumentos
     }
 
-    public Number(Long id, double value) {
-        this.id_number = id;
-        this.value_number = value;
+    public Number(Long id_number, double value_number) {
+        this.id_number = id_number;
+        this.value_number = value_number;
     }
 
     public Long getId_number() {

@@ -13,12 +13,12 @@ public class NumbersService {
     @Autowired
     private NumberRepository numberRepository;
 
-    public Number createNumber(Number number){
+    public Number create (Number number){
         return numberRepository.save(number);
     }
-
     public List<Number> getAllNumbers(){
         return numberRepository.findAll();
     }
+    public void delete (Number number){ numberRepository.delete(number); }
 
 }
